@@ -1,0 +1,170 @@
+2018-12-15 20:18:54.325  INFO 3628 --- [main] c.e.e.EventmanagementApiApplication      : Starting EventmanagementApiApplication on HOMEPC with PID 3628 (D:\work\development\projects\eventmanagement-api\out\production\classes started by user in D:\work\development\projects\eventmanagement-api)
+2018-12-15 20:18:54.325 DEBUG 3628 --- [main] c.e.e.EventmanagementApiApplication      : Running with Spring Boot v2.1.1.RELEASE, Spring v5.1.3.RELEASE
+2018-12-15 20:18:54.325  INFO 3628 --- [main] c.e.e.EventmanagementApiApplication      : No active profile set, falling back to default profiles: default
+2018-12-15 20:18:55.106  INFO 3628 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2018-12-15 20:18:55.153  INFO 3628 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47ms. Found 6 repository interfaces.
+2018-12-15 20:18:55.480  INFO 3628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2b29c1ec] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-15 20:18:55.496  INFO 3628 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$aaaa0f1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-15 20:18:55.809  INFO 3628 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2018-12-15 20:18:55.825  INFO 3628 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-15 20:18:55.825  INFO 3628 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.13
+2018-12-15 20:18:55.840  INFO 3628 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_181\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Users\user\AppData\Local\Microsoft\WindowsApps;;.]
+2018-12-15 20:18:55.940  INFO 3628 --- [main] o.a.c.c.C.[.[.[/mmsmessaging-api]        : Initializing Spring embedded WebApplicationContext
+2018-12-15 20:18:55.940  INFO 3628 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1584 ms
+2018-12-15 20:18:56.153  INFO 3628 --- [main] com.zaxxer.hikari.HikariDataSource       : mmsmessaging - Starting...
+2018-12-15 20:18:56.262  INFO 3628 --- [main] com.zaxxer.hikari.HikariDataSource       : mmsmessaging - Start completed.
+2018-12-15 20:18:56.340  INFO 3628 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-12-15 20:18:56.395  INFO 3628 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2018-12-15 20:18:56.396  INFO 3628 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-15 20:18:56.496  INFO 3628 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2018-12-15 20:18:56.589  INFO 3628 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table cm_messages if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table cm_push_batches if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table dw_customers if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table event if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table organizer if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table participant if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop table venue if exists
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    drop sequence if exists hibernate_sequence
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2018-12-15 20:18:57.231 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table cm_messages (
+       message_id bigint generated by default as identity,
+        campaign_id integer not null,
+        channel_id integer not null,
+        created timestamp,
+        status integer not null,
+        batch_id bigint not null,
+        cust_id integer not null,
+        primary key (message_id)
+    )
+2018-12-15 20:18:57.246 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table cm_push_batches (
+       batch_id bigint generated by default as identity,
+        channel_id integer not null,
+        consumed timestamp,
+        created timestamp,
+        status integer not null,
+        primary key (batch_id)
+    )
+2018-12-15 20:18:57.246 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table dw_customers (
+       cust_id integer not null,
+        address varchar(255),
+        city varchar(255),
+        firstname varchar(255),
+        lastname varchar(255),
+        state varchar(255),
+        primary key (cust_id)
+    )
+2018-12-15 20:18:57.246 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table event (
+       id bigint not null,
+        created timestamp,
+        description varchar(255),
+        end_time timestamp,
+        name varchar(255),
+        start_time timestamp,
+        started boolean,
+        zone_id binary(255),
+        organizer_id bigint not null,
+        venue_id bigint,
+        primary key (id)
+    )
+2018-12-15 20:18:57.246 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table organizer (
+       id bigint not null,
+        created timestamp,
+        name varchar(255),
+        primary key (id)
+    )
+2018-12-15 20:18:57.246 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table participant (
+       id bigint not null,
+        created timestamp,
+        checked_in boolean,
+        email varchar(255) not null,
+        name varchar(255) not null,
+        event_id bigint not null,
+        primary key (id)
+    )
+2018-12-15 20:18:57.246 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    create table venue (
+       id bigint not null,
+        created timestamp,
+        city varchar(255),
+        country varchar(255),
+        name varchar(255),
+        postal_code varchar(255),
+        state varchar(255),
+        street_address varchar(255),
+        street_address2 varchar(255),
+        primary key (id)
+    )
+2018-12-15 20:18:57.262 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cm_messages 
+       add constraint FKkenq5fc2eddn4q3gabghaq674 
+       foreign key (batch_id) 
+       references cm_push_batches
+2018-12-15 20:18:57.262 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    alter table cm_messages 
+       add constraint FKo52au7swyov7wwyrfel7mdsva 
+       foreign key (cust_id) 
+       references dw_customers
+2018-12-15 20:18:57.262 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    alter table event 
+       add constraint FKik6obgrxb8c6aakhf8fj7gs9h 
+       foreign key (organizer_id) 
+       references organizer
+2018-12-15 20:18:57.262 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    alter table event 
+       add constraint FKthgbmd6s6hp4l47kx1sh4cf9n 
+       foreign key (venue_id) 
+       references venue
+2018-12-15 20:18:57.262 DEBUG 3628 --- [main] org.hibernate.SQL                        : 
+    
+    alter table participant 
+       add constraint FKojeqkvv72xcx0ytdqkik7objq 
+       foreign key (event_id) 
+       references event
+2018-12-15 20:18:57.262  INFO 3628 --- [main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@37d6dddc'
+2018-12-15 20:18:57.277  INFO 3628 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-12-15 20:18:57.793  INFO 3628 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2018-12-15 20:18:58.059  WARN 3628 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-15 20:18:58.464  INFO 3628 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2018-12-15 20:18:58.637  INFO 3628 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2018-12-15 20:18:59.184  INFO 3628 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3211cc84, org.springframework.security.web.context.SecurityContextPersistenceFilter@10ad95cd, org.springframework.security.web.header.HeaderWriterFilter@7c5d36c3, org.springframework.security.web.authentication.logout.LogoutFilter@54e06788, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3921135e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@32d8710a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14c5283, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d2eb7fa, org.springframework.security.web.session.SessionManagementFilter@7b10472e, org.springframework.security.web.access.ExceptionTranslationFilter@15c4b1a4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@147059f8]
+2018-12-15 20:18:59.278  INFO 3628 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2018-12-15 20:18:59.293  INFO 3628 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2018-12-15 20:18:59.309  INFO 3628 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2018-12-15 20:18:59.480  INFO 3628 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/mmsmessaging-api'
+2018-12-15 20:18:59.480  INFO 3628 --- [main] c.e.e.EventmanagementApiApplication      : Started EventmanagementApiApplication in 5.5 seconds (JVM running for 6.915)

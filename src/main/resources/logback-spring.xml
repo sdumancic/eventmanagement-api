@@ -1,0 +1,40 @@
+<configuration scan="true" debug="true">
+
+    <turboFilter
+            class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+        <AllowedRepetitions>4</AllowedRepetitions>
+    </turboFilter>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %green([%thread]) %highlight(%-5level) %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/log-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>3MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>[%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.example.eventmanagementapi" level="DEBUG">
+    </logger>
+    <logger name="org.springframework.web" level="INFO">
+    </logger>
+    <logger name="org.hibernate" level="INFO">
+    </logger>
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="rollingFile" />
+    </root>
+</configuration>
